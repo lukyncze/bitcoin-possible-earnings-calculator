@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <title>BTC - Počítadlo možných výdělků</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/7ffc9ccdb4.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+  <header class="text-center text-white bg-danger p-5 mb-4">
+    <h1 class="display-3">Počítadlo možných výdělků - BTC</h1>
+  </header>
+
+  
+  <main class="container">
+    <h2 class="bg-dark text-white text-uppercase text-center p-3 mt-3">Zde zadej libovolná data!</h2>
+    <form>
+      <!-- DEPOSIT -->
+      <div class="form-group row">
+        <label for="deposit" class="col-sm-3 col-form-label">Vložené peníze (deposit v CZK):</label>
+        <div class="col-sm-9">
+            <input type="number" class="form-control" name="deposit" id="deposit" value="0">
+        </div>
+      </div>
+
+      <!-- MĚSÍC -->
+      <div class="form-group row">
+        <label for="month" class="col-sm-3 col-form-label">Měsíc vkladu do BTC:</label>
+        <div class="col-sm-9">
+          <select class="form-control" name="month" id="month">
+            <option value="0">leden</option>
+            <option value="1">únor</option>
+            <option value="2">březen</option>
+            <option value="3">duben</option>
+            <option value="4">květen</option>
+            <option value="5">červen</option>
+            <option value="6">červenec</option>
+            <option value="7">srpen</option>
+            <option value="8">září</option>
+            <option value="9">říjen</option>
+            <option value="10">listopad</option>
+            <option value="11">prosinec</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- ROK -->
+      <div class="form-group row">
+        <label for="year" class="col-sm-3 col-form-label">Rok vkladu do BTC:</label>
+        <div class="col-sm-9">
+          <select class="form-control" name="year" id="year">
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- VÝPOČET - BUTTON -->
+      <div class="form-group row">
+        <div class="offset-sm-3 col-sm-9">
+            <button type="button" id="calc" class="btn btn-success">Vypočítat</button>
+        </div>
+      </div>
+    </form>
+
+    <hr>
+    <!-- RESULTS -->
+    <div class="text-center">
+      <div id="result" class="">Zde se dozvíš o kolik jsi přišel...</div>
+      <div id="lastCall" class="text-danger"></div>
+      <div id="valueBtc"></div>
+    </div>
+    
+  </main>
+
+
+  <footer class="container-fluid text-center mt-5">
+    <hr>
+      <p class="explanation">Stránka funguje tak, že počítá s průměrem (minimem a maximem) ceny BTC.</p>
+      <p class="author">Vytvořil s <i class="fas fa-heart"> Lukáš Sukeník</i><br><a href="https://github.com/lukyncze">Github</a> <i class="fab fa-github"></i></p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>

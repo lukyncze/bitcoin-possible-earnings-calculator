@@ -1,0 +1,21 @@
+#result {
+    font-size: 1.8rem;
+}
+
+#lastCall {
+    font-size: 1.9rem;
+    margin-top: 2rem;
+}
+
+#valueBtc {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+.explanation {
+    font-size: 0.9rem;
+}
+
+.author {
+    font-size: 1.1rem;
+}
