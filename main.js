@@ -8,46 +8,42 @@ const btcData = [
     { year: '2020', worth: [8239.06, 9439.63, 6948.27, 7695.75, 9291.51, 9603.39, 10196.31, 11669.15, 11024.95, 12169.55, 16611.05, 23487.00] },
 ];
 const months = ['lednu','únoru','březnu','dubnu','květnu','červnu','červenci','srpnu','září','říjnu','listopadu','prosinci'];
-const dolarCzkWorth = 21.9009;
-var currentPriceBTC;
+var dollarCzkWorth,currentPriceBtcUSD;
 
-$.getJSON('https://api.coindesk.com/v1/bpi/currentprice.json', function(rate) {
-    currentPriceBTC=rate.bpi.USD.rate_float;
-    var CZK = (currentPriceBTC*dolarCzkWorth).toFixed(0);
-    var text = `Aktuální hodnota BTC: $${currentPriceBTC.toFixed(2)} (${CZK} Kč)`
-    $("#valueBtc").html(text);
+
+$.getJSON('http://www.floatrates.com/daily/usd.json', function(rate){
+    dollarCzkWorth=rate.czk.rate;
 });
+
+$.getJSON('https://blockchain.info/ticker', function(rate){
+    currentPriceBtcUSD=rate.USD.last;
+});
+
 
 $(function(){
     let BTC = {
         year: '2014',
         month: '0',
-        deposit: 21900/dolarCzkWorth,
+        deposit: 21900/dollarCzkWorth,
         worth: 862.24,
         part: function(){
-            let btcValue = btcData.find(obj => obj.year === this.year);
-            let btcPart = (this.deposit/dolarCzkWorth) / (btcValue.worth[this.month]);
-            //console.log(btcPart); // jakou část BTC vlastníme po depositu
-            return (btcPart);
+            // jakou část BTC vlastníme po depositu
+            let btcValue=btcData.find(obj => obj.year === this.year);
+            let btcPart=(this.deposit/dollarCzkWorth) / (btcValue.worth[this.month]);
+            return btcPart;
         },
-        value: function(){
-            let btcPart = this.part();
-            let btcVal = btcPart*currentPriceBTC*dolarCzkWorth;
-            console.log(btcVal);
-            return (btcVal.toFixed(0));
+        estate: function(){
+            // jmění v KČ
+            let btcPart=this.part();
+            let estate=(btcPart*currentPriceBtcUSD*dollarCzkWorth).toFixed(0);
+            return estate;
         },
-    }
-
-    //console.log(BTC.value());
-
-    $("#calc").on("click", function(){
-        BTC.deposit = $("#deposit").val();
-        BTC.month = $("#month").val();
-        BTC.year = $("#year").val();
-        valBtc = BTC.part().toFixed(8);
-        month = months[$("#month").val()];
-        percent = (BTC.value()/BTC.deposit).toFixed(0);
-        function lastCall(percent) {
+        percent: function(){
+            let percent=(this.estate()/this.deposit).toFixed(0);
+            return percent;
+        },
+        result: function(){
+            let percent=this.percent();
             if(percent<5){
                 return 'O Bitcoinu ses dozvěděl až včera?';
             }
@@ -61,10 +57,24 @@ $(function(){
                 return 'Toto se jen tak někomu nepovede, gratuluji!';
             }
             return 'Ty musíš být opravdu bohatý!';
-        }
+        },
+    }
+
+
+    $("#calc").on("click", function(){
+        BTC.deposit=$("#deposit").val();
+        BTC.month=$("#month").val();
+        BTC.year=$("#year").val();
+
+        btcCzkVal=(currentPriceBtcUSD*dollarCzkWorth).toFixed(0);
+        month=months[$("#month").val()];
         
-        result = $("#result").html(`Kdybys investoval do Bitcoinu ${BTC.deposit} Kč v ${month} ${BTC.year}, nyní by jsi měl <strong>${BTC.value()} Kč</strong> v Bitcoinu (${valBtc} BTC).<br>
-        Za předpokladu že bys tehdy investoval, vloženou částku bys znásobil <strong>${percent}x</strong>!<br>`);
-        result2 = $("#lastCall").html(`<strong>${lastCall(percent)}</strong>`);
+        result=$("#result").html(`Kdybys investoval do Bitcoinu ${BTC.deposit} Kč v ${month} ${BTC.year}, 
+        nyní by jsi měl <strong>${BTC.estate()} Kč</strong> v Bitcoinu (${BTC.part().toFixed(8)} BTC).<br>
+        Za předpokladu že bys tehdy investoval, vloženou částku bys znásobil <strong>${BTC.percent()}x</strong> (bez zdanění zisku)!<br>`);
+        hr=$(".hr").html(`<hr>`);
+        lastCall=$("#lastCall").html(`<strong>${BTC.result()}</strong>`);
+        valueBtc=$("#valueBtc").html(`Aktuální hodnota BTC: $${currentPriceBtcUSD.toFixed(2)} (${btcCzkVal} Kč)`);
+        czkToDollar=$("#czkToDollar").html(`Aktuální kurz: $1 = ${dollarCzkWorth.toFixed(4)} Kč`);
     });
 });

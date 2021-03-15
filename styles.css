@@ -1,13 +1,28 @@
+:root {
+    --bg-sel-col: #228b3a;
+}
+
+::selection {
+    background: var(--bg-sel-col);
+    color: white;
+}
+
+::-moz-selection {
+    background: var(--bg-sel-col);
+    color: white;
+}
+
 #result {
     font-size: 1.8rem;
+    margin-bottom: 1.3rem;
 }
 
 #lastCall {
-    font-size: 1.9rem;
-    margin-top: 2rem;
+    font-size: 2.1rem;
+    margin-top: 1.3rem;
 }
 
-#valueBtc {
+#valueBtc, #czkToDollar {
     font-size: 1.2rem;
     margin-top: 1rem;
 }
@@ -18,4 +33,10 @@
 
 .author {
     font-size: 1.1rem;
+}
+
+hr {
+    border: 1px solid white;
+    float: center;
+    width: 3%;
 }

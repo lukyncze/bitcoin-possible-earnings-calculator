@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <header class="text-center text-white bg-danger p-5 mb-4">
+  <header class="text-center text-white bg-success p-5 mb-4">
     <h1 class="display-3">Počítadlo možných výdělků - BTC</h1>
   </header>
 
@@ -22,7 +22,7 @@
       <div class="form-group row">
         <label for="deposit" class="col-sm-3 col-form-label">Vložené peníze (deposit v CZK):</label>
         <div class="col-sm-9">
-            <input type="number" class="form-control" name="deposit" id="deposit" value="0">
+            <input type="number" class="form-control" name="deposit" id="deposit" value="1000">
         </div>
       </div>
 
@@ -71,21 +71,21 @@
       </div>
     </form>
 
-    <hr>
-    <!-- RESULTS -->
-    <div class="text-center">
-      <div id="result" class="">Zde se dozvíš o kolik jsi přišel...</div>
-      <div id="lastCall" class="text-danger"></div>
-      <div id="valueBtc"></div>
-    </div>
-    
   </main>
 
+  <!-- RESULTS -->
+  <div class="text-center bg-secondary text-white mt-4 mb-3 p-4">
+    <div id="result">Zde se dozvíš o kolik jsi přišel...</div>
+    <div class="hr"></div>
+    <div id="lastCall" class="text-success"></div>
+    <div id="valueBtc"></div>
+    <div id="czkToDollar"></div>
+  </div>
 
-  <footer class="container-fluid text-center mt-5">
-    <hr>
-      <p class="explanation">Stránka funguje tak, že počítá s průměrem (minimem a maximem) ceny BTC.</p>
-      <p class="author">Vytvořil s <i class="fas fa-heart"> Lukáš Sukeník</i><br><a href="https://github.com/lukyncze">Github</a> <i class="fab fa-github"></i></p>
+  <footer class="container-fluid text-center mt-4">
+    <p class="explanation">Stránka funguje tak, že počítá s průměrem (minimem a maximem) ceny BTC za daný měsíc a rok.</p>
+    <p class="author">Vytvořil s <i class="fas fa-heart"></i> <strong>Lukáš Sukeník</strong>
+      <br><a href="https://github.com/lukyncze">Github</a> <i class="fab fa-github"></i></p>
   </footer>
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
