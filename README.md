@@ -7,4 +7,4 @@ Stránka počítá s průměrem (minima a maxima) ceny z úplynulých jednotliv�
 * aktuální cena BTC v USD
 * aktuální kurz USD a Kč
 
-Výsledek bude zveřejněn na vlastní [webové stránce](https://bitcoin-possible-earnings-calculator.netlify.app/).
+Výsledek bude zveřejněn na vlastní [webové stránce](https://lukyncze-bitcoin-possible-earnings-calculator.netlify.app/).
