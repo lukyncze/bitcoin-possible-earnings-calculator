@@ -50,11 +50,11 @@ $(function () {
     const depositMonth = months[$('#month').val()];
 
     $('#result').html(`Kdybys investoval do Bitcoinu ${CalcBtc.deposit} Kč v ${depositMonth} ${CalcBtc.year},
-        nyní by jsi měl <strong>${CalcBtc.estate()} Kč</strong> v Bitcoinu (${CalcBtc.part().toFixed(8)} CalcBtc).<br>
+        nyní by jsi měl <strong>${CalcBtc.estate()} Kč</strong> v Bitcoinu (${CalcBtc.part().toFixed(8)} BTC).<br>
         Za předpokladu že bys tehdy investoval, vloženou částku bys znásobil <strong>${CalcBtc.percent()}x</strong> (bez zdanění zisku)!<br>`);
     $('.hr').html(`<hr>`);
     $('#lastCall').html(`<strong>${CalcBtc.result()}</strong>`);
-    $('#valueBtc').html(`Aktuální hodnota CalcBtc: $${btcUsdPrice.toFixed(2)} (${btcCzkVal} Kč)`);
+    $('#valueBtc').html(`Aktuální hodnota BTC: $${btcUsdPrice.toFixed(2)} (${btcCzkVal} Kč)`);
     $('#czkToDollar').html(`Aktuální kurz: $1 = ${dollarToCzk.toFixed(4)} Kč`);
   });
 });
