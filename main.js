@@ -8,7 +8,7 @@ const btcData = [
   {year: '2020', worth: [8239.06, 9439.63, 6948.27, 7695.75, 9291.51, 9603.39, 10196.31, 11669.15, 11024.95, 12169.55, 16611.05, 23487.0]},
 ];
 const months = ['lednu', 'únoru', 'březnu', 'dubnu', 'květnu', 'červnu', 'červenci', 'srpnu', 'září', 'říjnu', 'listopadu', 'prosinci'];
-var dollarCzkWorth, currentPriceBtcUSD;
+let dollarCzkWorth, currentPriceBtcUSD;
 
 $.getJSON('https://cdn.moneyconvert.net/api/boa.json', function (res) {
   dollarCzkWorth = res.rates.CZK;
